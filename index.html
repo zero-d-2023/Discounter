@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discounter Zen | 오늘 할 일</title>
+    <link rel="stylesheet" href="style.css?v=2.1">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Force Layout for Critical Elements (Cache Override) */
+        .top-banner-box {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border-radius: 20px !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            padding: 20px !important;
+            text-align: center !important;
+            margin-bottom: 24px !important;
+        }
+        .top-banner-box .label { font-size: 0.9rem !important; color: #94a3b8 !important; }
+        .top-banner-box .date { font-size: 1.6rem !important; font-weight: 700 !important; color: #4ade80 !important; }
+
+        .note-box {
+            background: rgba(251, 113, 133, 0.1) !important;
+            border: 1px solid rgba(251, 113, 133, 0.2) !important;
+            border-radius: 16px !important;
+            padding: 16px !important;
+            margin-bottom: 24px !important;
+            font-size: 0.85rem !important;
+            line-height: 1.6 !important;
+            color: #fda4af !important;
+        }
+        .note-box strong { color: #fb7185 !important; display: block; margin-bottom: 4px; font-size: 0.95rem !important; }
+
+        .work-item .target-date { font-size: 1.7rem !important; font-weight: 700 !important; }
+        .work-item .label { font-size: 1.3rem !important; font-weight: 700 !important; }
+    </style>
+</head>
+<body>
+    <div class="glass-container">
+        <header>
+            <h1 id="main-title">Discounter <span class="highlight">Zen</span></h1>
+        </header>
+
+        <!-- Top Big Banner -->
+        <div class="top-banner-box">
+            <span class="label">오늘 기준일</span><br>
+            <span class="date" id="top-display">데이터 로딩 중...</span>
+        </div>
+
+        <!-- Special Instruction Note -->
+        <div class="note-box">
+            <strong>⚠️ 두채류/계란 폐기 관련 특별 지시</strong>
+            두채류와 계란은 전부 당일 폐기가 원칙입니다. 단, 재고가 많을 시 선임 보고 후 당일까지 판매 협의 가능합니다.
+        </div>
+
+        <main class="work-grid">
+            <!-- Tofu & Sprouts -->
+            <div class="category-card" id="card-tofu">
+                <div class="card-header-main"><span class="icon">🥬</span><span class="name">두채류</span></div>
+                <div class="work-instruction">
+                    <div class="work-item discount-20"><span class="target-date" id="date-20-tofu">--/--</span><div class="label-group"><span class="label">20% 부착</span><span class="standard">(D-2)</span></div></div>
+                    <div class="work-item discount-40"><span class="target-date" id="date-40-tofu">--/--</span><div class="label-group"><span class="label">40% 부착</span><span class="standard">(D-1)</span></div></div>
+                    <div class="work-item discard"><span class="target-date" id="date-discard-tofu">--/--</span><div class="label-group"><span class="label">당일 폐기</span><span class="standard">(D-0)</span></div></div>
+                </div>
+            </div>
+
+            <!-- Eggs -->
+            <div class="category-card" id="card-egg">
+                <div class="card-header-main"><span class="icon">🥚</span><span class="name">계란</span></div>
+                <div class="work-instruction">
+                    <div class="work-item discount-20"><span class="target-date" id="date-20-egg">--/--</span><div class="label-group"><span class="label">20% 부착</span><span class="standard">(D-6)</span></div></div>
+                    <div class="work-item discount-40"><span class="target-date" id="date-40-egg">--/--</span><div class="label-group"><span class="label">40% 부착</span><span class="standard">(D-5)</span></div></div>
+                    <div class="work-item discard"><span class="target-date" id="date-discard-egg">--/--</span><div class="label-group"><span class="label">당일 폐기</span><span class="standard">(D-0)</span></div></div>
+                </div>
+            </div>
+
+            <!-- Roasted Eggs -->
+            <div class="category-card" id="card-roasted">
+                <div class="card-header-main"><span class="icon">🥚</span><span class="name">구운란</span></div>
+                <div class="work-instruction">
+                    <div class="work-item discount-20"><span class="target-date" id="date-20-roasted">--/--</span><div class="label-group"><span class="label">20% 부착</span><span class="standard">(D-3)</span></div></div>
+                    <div class="work-item discount-40"><span class="target-date" id="date-40-roasted">--/--</span><div class="label-group"><span class="label">40% 부착</span><span class="standard">(D-2)</span></div></div>
+                    <div class="work-item discard"><span class="target-date" id="date-discard-roasted">--/--</span><div class="label-group"><span class="label">당일 폐기</span><span class="standard">(D-0)</span></div></div>
+                </div>
+            </div>
+
+            <!-- Stevia Tomatoes -->
+            <div class="category-card" id="card-stevia">
+                <div class="card-header-main"><span class="icon">🍅</span><span class="name">스테비아</span></div>
+                <div class="work-instruction">
+                    <div class="work-item discount-20"><span class="target-date" id="date-20-stevia">--/--</span><div class="label-group"><span class="label">20% 부착</span><span class="standard">(D-3)</span></div></div>
+                    <div class="work-item discount-40"><span class="target-date" id="date-40-stevia">--/--</span><div class="label-group"><span class="label">40% 부착</span><span class="standard">(D-2~0)</span></div></div>
+                    <div class="work-item discard"><span class="target-date" id="date-discard-stevia">--/--</span><div class="label-group"><span class="label">폐기 작업</span><span class="standard">(D+1)</span></div></div>
+                </div>
+            </div>
+
+            <!-- Seafood -->
+            <div class="category-card" id="card-fish">
+                <div class="card-header-main"><span class="icon">🐟</span><span class="name">수산</span></div>
+                <div class="work-instruction">
+                    <div class="work-item discount-20"><span class="target-date" id="date-20-fish">--/--</span><div class="label-group"><span class="label">20% 부착</span><span class="standard">(D-1)</span></div></div>
+                    <div class="work-item discount-40"><span class="target-date" id="date-40-fish">--/--</span><div class="label-group"><span class="label">40% 부착</span><span class="standard">(D-0)</span></div></div>
+                    <div class="work-item discard"><span class="target-date" id="date-discard-fish">--/--</span><div class="label-group"><span class="label">폐기 작업</span><span class="standard">(D+1)</span></div></div>
+                </div>
+            </div>
+
+            <!-- Meat -->
+            <div class="category-card" id="card-meat">
+                <div class="card-header-main"><span class="icon">🥩</span><span class="name">축산</span></div>
+                <div class="work-instruction">
+                    <div class="work-item discount-20"><span class="target-date" id="date-20-meat">--/--</span><div class="label-group"><span class="label">20% 부착</span><span class="standard">(D-2)</span></div></div>
+                    <div class="work-item discount-40"><span class="target-date" id="date-40-meat">--/--</span><div class="label-group"><span class="label">40% 부착</span><span class="standard">(D-1~0)</span></div></div>
+                    <div class="work-item discard"><span class="target-date" id="date-discard-meat">--/--</span><div class="label-group"><span class="label">폐기 작업</span><span class="standard">(D+1)</span></div></div>
+                </div>
+            </div>
+        </main>
+
+        <section class="reference-section">
+            <h2 class="section-title">할인 기준표 (Standard Rules)</h2>
+            <div class="table-wrapper">
+                <table class="standard-table">
+                    <thead><tr><th>품목</th><th>20% 할인</th><th>40% 할인</th><th>폐기 기준</th></tr></thead>
+                    <tbody>
+                        <tr><td>두채류</td><td>D-2</td><td>D-1</td><td>D-0 폐기</td></tr>
+                        <tr><td>계란</td><td>D-6</td><td>D-5</td><td>D-0 폐기</td></tr>
+                        <tr><td>구운란</td><td>D-3</td><td>D-2</td><td>D-0 폐기</td></tr>
+                        <tr><td>스테비아</td><td>D-3</td><td>D-2 ~ D-0</td><td>D+1 폐기</td></tr>
+                        <tr><td>수산</td><td>D-1</td><td>D-0</td><td>D+1 폐기</td></tr>
+                        <tr><td>축산</td><td>D-2</td><td>D-1 ~ D-0</td><td>D+1 폐기</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="info-footer">
+            <div class="today-info"><span class="label">오늘 기준일</span><br><span class="date" id="today-display">----</span></div>
+            <p class="guide">위 날짜의 상품을 찾아 해당 할인율을 적용하세요.</p>
+        </section>
+
+        <footer><p>&copy; 2026 Discounter Zen. Optimized v2.5</p></footer>
+    </div>
+
+    <script src="discounter.js"></script>
+</body>
+</html>
